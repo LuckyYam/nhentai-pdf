@@ -1,11 +1,9 @@
 {
   "compilerOptions": {            
     "target": "ES6",                                
-    "module": "commonjs",                           
-    "lib": [
-      "ESNext"
-    ],                                   
-    "outDir": "./dist",       
+    "module": "CommonJS",
+    "lib": ["ESNext", "DOM"],                                 
+    "outDir": "dist/",       
     "declaration": true,            
     "strict": true,
     "strictFunctionTypes": true,                      
