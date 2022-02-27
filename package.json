@@ -1,6 +1,6 @@
 {
     "name": "@shineiichijo/nhentai-pdf",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "Fork of nhentai-pdf",
     "main": "dist/index.js",
     "files": [
@@ -43,6 +43,6 @@
     "dependencies": {
         "axios": "^0.21.1",
         "cheerio": "^1.0.0-rc.10",
-        "pdfkit": "^0.12.1"
+        "pdfkit": "^0.13.0"
     }
 }

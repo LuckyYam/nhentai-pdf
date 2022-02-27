@@ -39,7 +39,13 @@ export default class Doujin extends EventEmitter {
 
     pdf = async (filename?: string): Promise<Buffer> => {
         if (!this._info) await this.fetch()
-        const PDF = new Document(this._info?.pages as [], 'A4')
+        const pages = []
+        for (const page of await (
+            await this.fetch()
+        ).pages) {
+            pages.push(page)
+        }
+        const PDF = new Document(pages, 'A4')
         const buffer = await PDF.build()
         if (filename) await writeFile(filename as unknown as string, buffer)
         return buffer
