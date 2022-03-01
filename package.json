@@ -1,6 +1,6 @@
 {
     "name": "@shineiichijo/nhentai-pdf",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Fork of nhentai-pdf",
     "main": "dist/index.js",
     "files": [
@@ -9,6 +9,7 @@
     "types": "dist/index.d.ts",
     "scripts": {
         "build": "yarn rimraf dist/ && yarn tsc",
+        "prepublish": "yarn build",
         "lint": "eslint . --ignore-path .gitignore --ext .ts",
         "lint:fix": "eslint . --ignore-path .gitignore --ext .ts --fix"
     },
