@@ -8,18 +8,16 @@ export class Document {
 
     build = async (): Promise<Buffer> => {
         const document = new PDF({ margin: 0, size: sizes[this.size] })
-        await new Promise<void>((resolve) => {
-            this.pages.forEach(async (image, index) => {
-                const file = existsSync(image) ? image : await download(image)
-                document.image(file, 0, 0, {
-                    fit: sizes[this.size] as [number, number],
-                    align: 'center',
-                    valign: 'center'
-                })
-                if (index === this.pages.length - 1) resolve()
-                else document.addPage()
+        for (const image of this.pages) {
+            const file = existsSync(image) ? image : await download(image)
+            document.image(file, 0, 0, {
+                fit: sizes[this.size] as [number, number],
+                align: 'center',
+                valign: 'center'
             })
-        })
+            if (this.pages.indexOf(image) === this.pages.length - 1) break
+            else document.addPage()
+        }
         document.end()
         const filename = `${tmpdir()}/${this.size}_${Math.random().toString()}.pdf`
         const stream = createWriteStream(filename)
